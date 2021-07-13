@@ -1,6 +1,10 @@
+
 package kafka
 
-import ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+import (
+     "ok"
+     ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+)
 
 type KafkaProducer struct {
 	Producer *ckafka.Producer
@@ -14,9 +18,9 @@ func (k *KafkaProducer) SetupProducer(bootstrapServer string) {
 	configMap := &ckafka.ConfigMap{
 		"bootstrap.servers":bootstrapServer,
                 "security.protocol": os.Getenv("security.protocol"),
-                "security.mechanisms": os.Getenv("security.mechanisms"),
-                "security.username": os.Getenv("security.username"),
-                "security.password": os.Getenv("security.password"),
+                "sasl.mechanisms": os.Getenv("sasl.mechanisms"),
+                "sasl.username": os.Getenv("sasl.username"),
+                "sasl.password": os.Getenv("sasl.password"),
 	}
 	k.Producer, _ = ckafka.NewProducer(configMap)
 }
