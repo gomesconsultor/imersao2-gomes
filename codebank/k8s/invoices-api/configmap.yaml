@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: codebank-conf
+data:
+  env:
+    host=postgres-postgresql
+    port=5432
+    user=postgres
+    passworld=5XunWTHWVJ
+    dbname=codebank
+    KafkaBootstrapServer=servidor_kafka:9092  
+    KafkaTransactionTopic=payments
+    security.protocol= os.Getenv("security.protocol"),
+    security.mechanisms= os.Getenv("security.mechanisms"),
+    security.username= os.Getenv("security.username"),
+    security.password= os.Getenv("security.password"),
+

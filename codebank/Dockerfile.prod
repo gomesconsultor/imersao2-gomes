@@ -1,0 +1,15 @@
+FROM golang:1.15
+
+WORKDIR /go/src
+ENV PATH="/go/bin:${PATH}"
+
+ENV GO111MODULE=on
+ENV CGO_ENABLED=1
+RUN  apt-get install build-essential librdkafka-dev -y
+
+COPY ..
+RUN GOOS=linux go build -ldflags="-s -w" -o codebank
+ENTRYPOINT ["./codebank"]
+
+
+
